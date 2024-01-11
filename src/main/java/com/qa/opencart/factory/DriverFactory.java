@@ -58,12 +58,12 @@ public class DriverFactory {
 		}
 
 		else {
-			System.out.println("Please pass the right browser " + broswerName);
+			System.out.println("Please pass the right browser name" + broswerName);
 		}
 
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
-		getDriver().get(prop.getProperty("url"));
+		getDriver().get(prop.getProperty("url").trim());
 		return getDriver();
 	}
 
