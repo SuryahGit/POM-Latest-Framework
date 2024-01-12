@@ -21,7 +21,7 @@ public class OptionsManager {
 	public ChromeOptions getChromeOptions() {
 		co = new ChromeOptions();
 		if (Boolean.parseBoolean(prop.getProperty("headless").trim())) {
-			System.out.println("============ Running chrome in headless mode ==============");
+			System.out.println("=========== Running chrome in headless mode ==============");
 			co.addArguments("--headless");
 		}
 		if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
