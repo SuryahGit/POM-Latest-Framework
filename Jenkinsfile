@@ -54,7 +54,7 @@ pipeline
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/regression-allure-results'']]
+                        results: [[path: '/regression-allure-results']]
                     ])
                 }
             }
@@ -97,7 +97,7 @@ pipeline
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/sanity-allure-results'']]
+                        results: [[path: '/sanity-allure-results']]
                     ])
                 }
             }
