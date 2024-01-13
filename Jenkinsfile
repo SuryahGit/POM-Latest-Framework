@@ -49,6 +49,7 @@ pipeline
         stage('Publish Regression Allure Reports') {
            steps {
                 script {
+                deleteArtifacts([pattern: 'allure-report.zip'])
                     allure([
                         includeProperties: false,
                         jdk: '',
