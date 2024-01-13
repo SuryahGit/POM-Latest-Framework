@@ -1,5 +1,7 @@
 package com.qa.opencart.factory;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,47 +16,48 @@ public class OptionsManager {
 	private EdgeOptions eo;
 
 	public OptionsManager(Properties prop) {
-
 		this.prop = prop;
 	}
 
 	public ChromeOptions getChromeOptions() {
 		co = new ChromeOptions();
-		if (Boolean.parseBoolean(prop.getProperty("headless").trim())) {
-			System.out.println("============ Running chrome in headless mode ==============");
-			co.addArguments("--headless");
-		}
-		if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
-			System.out.println("=========== Running chrome in  incognito mode ==============");
+		// co.addArguments("--remote-allow-origins=*");
 
-			co.addArguments("--incognito");
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+			co.setCapability("browserName", "chrome");
+			co.setCapability("browserVersion", prop.getProperty("browserversion"));
+			Map<String, Object> selenoidOptions = new HashMap<>();
+			selenoidOptions.put("enableVNC", true);
+			selenoidOptions.put("name", prop.getProperty("testcasename"));
+			co.setCapability("selenoid:options", selenoidOptions);
 		}
+
+		if (Boolean.parseBoolean(prop.getProperty("headless").trim())) {
+			System.out.println("=========Running chrome in headless==========");
+			co.addArguments("--headless");
+
+		}
+		if (Boolean.parseBoolean(prop.getProperty("incognito").trim()))
+			co.addArguments("--incognito");
 		return co;
 	}
 
 	public FirefoxOptions getFirefoxOptions() {
+		System.out.println("firefox options");
 		fo = new FirefoxOptions();
-		if (Boolean.parseBoolean(prop.getProperty("headless").trim())) {
-			System.out.println("=========== Running firefox in headless mode ==============");
+		if (Boolean.parseBoolean(prop.getProperty("headless").trim()))
 			fo.addArguments("--headless");
-		}
-		if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
-			System.out.println("=========== Running firfox in incognito mode ==============");
+		if (Boolean.parseBoolean(prop.getProperty("incognito").trim()))
 			fo.addArguments("--incognito");
-		}
 		return fo;
 	}
 
 	public EdgeOptions getEdgeOptions() {
 		eo = new EdgeOptions();
-		if (Boolean.parseBoolean(prop.getProperty("headless").trim())) {
-			System.out.println("=========== Running edge in headless mode ==============");
+		if (Boolean.parseBoolean(prop.getProperty("headless").trim()))
 			eo.addArguments("--headless");
-		}
-		if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
-			System.out.println("=========== Running edge in incognito mode ==============");
+		if (Boolean.parseBoolean(prop.getProperty("incognito").trim()))
 			eo.addArguments("--incognito");
-		}
 		return eo;
 	}
 
