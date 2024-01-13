@@ -49,13 +49,12 @@ pipeline
         stage('Publish Regression Allure Reports') {
            steps {
                 script {
-                deleteArtifacts([pattern: 'allure-report.zip'])
                     allure([
                         includeProperties: false,
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/regression-allure-results']]
+                        results: [[path: '/allure-results']]
                     ])
                 }
             }
@@ -98,7 +97,7 @@ pipeline
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/sanity-allure-results']]
+                        results: [[path: '/allure-results']]
                     ])
                 }
             }
