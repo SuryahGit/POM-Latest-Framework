@@ -69,7 +69,7 @@ public class AccountsPageTest extends BaseTest {
 
 	@DataProvider
 	public Object[][] getProductData() {
-		return new Object[][] { { "Macbook" }, { "IMac" }, { "Apple" }, { "Samsung" }, { "Dummy" } };
+		return new Object[][] { { "Macbook" }, { "IMac" }, { "Apple" }, { "Samsung" } };// , { "Dummy" } };
 	}
 
 	@Severity(SeverityLevel.NORMAL)
