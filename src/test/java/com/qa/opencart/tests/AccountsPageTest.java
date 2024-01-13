@@ -73,7 +73,7 @@ public class AccountsPageTest extends BaseTest {
 	}
 
 	@Severity(SeverityLevel.NORMAL)
-	@Description("... Searching the product in search box")
+	@Description("... Searching the product in search box ")
 	@Test(dataProvider = "getProductData")
 	public void searchProductCountTest(String searchKey) {
 		searchPage = Accpage.performSearch(searchKey);
