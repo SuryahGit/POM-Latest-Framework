@@ -57,7 +57,7 @@ public class DriverFactory {
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			}
 		}
-		
+
 		// firefox:
 		else if (browserName.equalsIgnoreCase("firefox")) {
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
@@ -174,7 +174,7 @@ public class DriverFactory {
 					break;
 
 				default:
-					System.out.println("... Wrong env is passed .. No need to run the test cases");
+					System.out.println("... Wrong env is passed. No need to run the test cases");
 					break;
 				}
 			}
